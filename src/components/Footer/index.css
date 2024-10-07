@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+.footer p {
+  text-align: center;
+  color: white;
+}

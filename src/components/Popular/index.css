@@ -1,0 +1,26 @@
+.popular {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0px 60px 0px 60px;
+  background-color: rgb(0, 0, 0);
+}
+.popular ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.popular-image {
+  width: 200px;
+  height: 140px;
+  top: 135px;
+  left: 165px;
+  gap: 0px;
+  border-radius: 8px;
+  opacity: 0px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+li {
+  list-style: none;
+}

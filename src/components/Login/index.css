@@ -1,0 +1,131 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://res.cloudinary.com/df7wnybwg/image/upload/v1728136219/MoviesApp/login-bg_dqmv0w.png');
+  background-size: cover;
+  height: 100vh;
+  padding: 50px;
+}
+.login-card {
+  width: 456px;
+  height: 440px;
+  top: 292px;
+  left: 492px;
+  gap: 0px;
+  border-radius: 8px 0px 0px 0px;
+  opacity: 0.8px;
+  background: #0c0b10ca;
+  margin: auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  width: 180px;
+  height: 52px;
+  top: 48px;
+  left: 165px;
+  gap: 0px;
+  opacity: 0px;
+  color: #e50014;
+  align-self: flex-start;
+}
+.login-text {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  color: white;
+}
+.label-input {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.label-input label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.label-input input {
+  width: 360px;
+  height: 40px;
+  top: 24px;
+  gap: 0px;
+  border-radius: 2px 0px 0px 0px;
+  opacity: 0px;
+  background: #333333;
+  border: 0px solid;
+}
+.login-btn {
+  width: 360px;
+  height: 40px;
+  top: 628px;
+  left: 540px;
+  gap: 0px;
+  opacity: 0px;
+  color: white;
+  background-color: #e50014;
+  border: 0px solid;
+  border-radius: 5px;
+}
+.errorMsg{
+  color: rgb(222, 27, 27);
+}
+@media (max-width: 768px) {
+  .heading {
+    width: 100px;
+    height: 27px;
+    top: 32px;
+    left: 32px;
+    padding: 0px;
+    gap: 0px;
+    opacity: 0px;
+    margin: none;
+  }
+  .login-card {
+    background-color: transparent;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .login-container {
+    background-image: none;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 20px;
+    padding-top: 50px;
+  }
+  .label-input input {
+    width: 296px;
+    height: 40px;
+    top: 24px;
+    gap: 0px;
+    border-radius: 2px 0px 0px 0px;
+    opacity: 0px;
+  }
+  .login-btn {
+    width: 296px;
+    height: 40px;
+    top: 404px;
+    left: 32px;
+    padding: 8px 20px 8px 20px;
+    gap: 10px;
+    border-radius: 4px 0px 0px 0px;
+    opacity: 0px;
+  }
+}
