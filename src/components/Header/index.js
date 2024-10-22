@@ -57,11 +57,6 @@ const Header = props => {
     width: '100%',
   }
 
-  const desktopHeaderStyle = {
-    display: screenWidth <= 768 ? 'none' : 'flex',
-    justifyContent: 'space-between',
-  }
-
   const mobileHeaderStyle = {
     display: screenWidth <= 768 ? 'flex' : 'none',
     flexDirection: searchBar ? 'column' : 'row',
@@ -76,7 +71,7 @@ const Header = props => {
 
   return (
     <div style={headerContainerStyle}>
-      <div className="header desktop-header" style={desktopHeaderStyle}>
+      <div className="header desktop-header desktopHeaderStyle">
         <nav className="nav-items">
           <ul>
             <li>
@@ -90,34 +85,46 @@ const Header = props => {
             </li>
             <li>
               <Link to="/">
-                <p className="nav-item">Home</p>
+                <p className="nav-item desktop">Home</p>
               </Link>
             </li>
             <li>
               <Link to="/popular">
-                <p className="nav-item">Popular</p>
+                <p className="nav-item desktop">Popular</p>
               </Link>
             </li>
           </ul>
         </nav>
-
         <div className="nav-items">
           {searchBar ? (
             searchBarHandler()
           ) : (
-            <Link to="/search">
-              <button
-                className="search-btn"
-                type="button"
-                data-testid="searchButton"
-              >
-                <HiOutlineSearch
-                  size={20}
-                  color="white"
+            <>
+              <Link to="/search">
+                <button
+                  className="search-btn"
+                  type="button"
                   data-testid="searchButton"
+                >
+                  <HiOutlineSearch
+                    size={20}
+                    color="white"
+                    data-testid="searchButton"
+                  />
+                </button>
+              </Link>
+              <button
+                className="hamburger-btn"
+                type="button"
+                onClick={() => setshownavbar(true)}
+              >
+                <img
+                  src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728216781/MoviesApp/hamburger_boyujw.png"
+                  className="hamburger-icon"
+                  alt="hamburger-icon"
                 />
               </button>
-            </Link>
+            </>
           )}
           <Link to="/account">
             <img
@@ -126,49 +133,6 @@ const Header = props => {
               alt="profile"
             />
           </Link>
-        </div>
-      </div>
-
-      <div className="header mobile-header" style={mobileHeaderStyle}>
-        <div className="nav-items">
-          <Link to="/">
-            <img
-              src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728136273/MoviesApp/movie_icon_afcdmy.png"
-              className="title-logo"
-              alt="website logo"
-            />
-          </Link>
-        </div>
-
-        <div className="nav-items mobile-search" style={mobileSearchStyle}>
-          {searchBar ? (
-            searchBarHandler()
-          ) : (
-            <Link to="/search">
-              <button
-                className="search-btn"
-                type="button"
-                data-testid="searchButton"
-              >
-                <img
-                  src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728284075/MoviesApp/search_h37k1k.png"
-                  alt="search"
-                />
-              </button>
-            </Link>
-          )}
-          <button
-            className="hamburger-btn"
-            type="button"
-            onClick={() => setshownavbar(true)}
-            style={{display: shownavbar ? 'hidden' : 'flex'}}
-          >
-            <img
-              src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728216781/MoviesApp/hamburger_boyujw.png"
-              className="hamburger-icon"
-              alt="hamburger-icon"
-            />
-          </button>
         </div>
       </div>
 
