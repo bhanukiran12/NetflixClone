@@ -1,0 +1,41 @@
+.searchImageResult {
+  width: 200px;
+  height: 150px;
+  top: 135px;
+  left: 166px;
+  border-radius: 8px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+.search-route-btn {
+  height: 42px;
+  width: 40px;
+  background-color: rgb(23, 21, 21);
+  border: 1px solid white;
+  border-left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 0px 5px 5px 0px;
+}
+.searchBarHandler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbar {
+  height: 40px;
+  width: auto;
+  max-width: 248px;
+  border: 1px solid white;
+  border-right: 0px;
+  border-radius: 5px 0px 0px 5px;
+}
+.search-failure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

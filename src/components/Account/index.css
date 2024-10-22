@@ -1,0 +1,41 @@
+.profile {
+  padding: 40px 60px 20px 60px;
+}
+.profile h1 {
+  width: 133px;
+  height: 47px;
+  top: 167px;
+  left: 165px;
+}
+.line {
+  background: #a8b0ba;
+}
+.memebership {
+  display: flex;
+}
+.memebership p {
+  margin-right: 30px;
+}
+.memebership-title {
+  color: #94a3b8;
+}
+.password {
+  color: #64748b;
+}
+.logout-btn {
+  width: 89px;
+  height: 40px;
+  top: 508px;
+  left: 675px;
+  padding: 8px 20px 8px 20px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+  background-color: #e50914;
+  color: white;
+  border: 0px solid;
+}
+.logout {
+  text-align: center;
+  margin: 60px;
+}

@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import {Link} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
@@ -8,18 +9,15 @@ import './index.css'
 const Popular = () => {
   const [popularMovies, setpopularMovies] = useState([])
   const [popularLoading, setpopularLoading] = useState(true)
-  useEffect(() => {
-    popularAPIHandler()
-  }, [])
+  const [apiError, setApiError] = useState(false)
 
-  const isLoading = () => {
-    return (
-      <div className="loader-container" testid="loader">
-        <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
-      </div>
-    )
-  }
+  const isLoading = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+    </div>
+  )
   const popularAPIHandler = async () => {
+    setpopularLoading(true)
     const jwtToken = Cookies.get('jwt_token')
     const url = 'https://apis.ccbp.in/movies-app/popular-movies'
     const options = {
@@ -40,32 +38,57 @@ const Popular = () => {
       }))
       setpopularMovies(updatedDate)
       setpopularLoading(false)
+      setApiError(false)
+    } else {
+      setApiError(true)
     }
   }
-  console.log(popularMovies)
+
+  useEffect(() => {
+    popularAPIHandler()
+  }, [])
+
+  const apiFailure = () => (
+    <div className="apiFailure">
+      <img
+        src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728365736/MoviesApp/Background-Complete_uxsukd.png"
+        alt="failure view"
+      />
+      <p>Something went wrong. Please try again</p>
+      <button type="button" onClick={popularAPIHandler}>
+        Try Again
+      </button>
+    </div>
+  )
   const styles = {
     bgcolor: true,
   }
+  const popularView = () =>
+    apiError ? (
+      apiFailure()
+    ) : (
+      <div>
+        <div className="popular">
+          <ul>
+            {popularMovies.map(each => (
+              <Link to={`/movies/${each.id}`} key={each.id}>
+                <li key={each.id}>
+                  <img
+                    src={each.posterPath}
+                    className="popular-image"
+                    alt={each.title}
+                  />
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
   return (
     <>
-      <Header styles={styles} />{' '}
-      {popularLoading ? (
-        isLoading()
-      ) : (
-        <div>
-          <div className="popular">
-            <ul>
-              {popularMovies.map(each => (
-                <li>
-                  <img src={each.backdropPath} className="popular-image" />
-                </li>
-              ))}
-            </ul>
-           
-          </div>
-        </div>
-      )}
-       <Footer />
+      <Header styles={styles} /> {popularLoading ? isLoading() : popularView()}
+      <Footer />
     </>
   )
 }

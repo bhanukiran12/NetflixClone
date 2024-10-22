@@ -8,6 +8,11 @@
   justify-content: space-between;
 }
 
+.nav-items ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .nav-items {
   display: flex;
   justify-content: center;
@@ -22,8 +27,9 @@
   margin-right: 20px;
 }
 .nav-item {
-  width: 42px;
-  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 38px;
   left: 348px;
   font-size: 16px;
@@ -32,7 +38,13 @@
   letter-spacing: -0.35555556416511536px;
   text-align: left;
   margin-right: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.308);
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+.active {
+  background-color: rgba(0, 0, 0, 0.81) !important;
 }
 .avatar {
   width: 48px;
@@ -48,19 +60,82 @@
   gap: 0px;
   opacity: 0px;
 }
-.mobile-header-container {
+.mobile-header {
   display: none;
 }
 @media (max-width: 768px) {
   .header-container {
     display: none;
   }
-  .mobile-header-container {
-    display: block;
-    padding: 20px 60px 0px 60px;
-    background-color: rgba(255, 255, 255, 0.066);
-  }
 }
 a {
   text-decoration: none;
+}
+.mobile-nav-items p {
+  width: 54px;
+  height: 26px;
+  top: 83px;
+  left: 106px;
+  margin-right: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: -0.35555556416511536px;
+  text-align: left;
+  color: white;
+}
+.mobile-nav-items ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mobile-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 90%;
+}
+.hamburger-btn {
+  background-color: rgba(0, 0, 0, 0.36);
+  border: 0px solid;
+  height: fit-content;
+}
+.close {
+  width: 24px;
+  height: 24px;
+  top: 84px;
+  left: 304px;
+  padding: 2px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.search-btn {
+  background-color: rgba(0, 0, 0, 0.212);
+  border: 0px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+.search-route-btn {
+  height: 42px;
+  width: 40px;
+  background-color: rgb(23, 21, 21);
+  border: 1px solid white;
+  border-left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 0px 5px 5px 0px;
+}
+.searchBarHandler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

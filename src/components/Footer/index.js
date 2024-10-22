@@ -1,12 +1,27 @@
 import './index.css'
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 
-const Footer = () => {
-  return (
-    <div className="footer">
-      <img src="https://res.cloudinary.com/df7wnybwg/image/upload/v1728215709/MoviesApp/Group_7395_aftyb6.png" />
-      <p>Contact US</p>
+const Footer = () => (
+  <div className="footer-container">
+    <div>
+      <ul className="social-list">
+        <li>
+          <FaGoogle className="social-icon" />
+        </li>
+        <li>
+          <FaTwitter className="social-icon" />
+        </li>
+        <li>
+          <FaInstagram className="social-icon" />
+        </li>
+        <li>
+          <FaYoutube className="social-icon" />
+        </li>
+      </ul>
     </div>
-  )
-}
-
+    <div>
+      <p className="footer-head">Contact us</p>
+    </div>
+  </div>
+)
 export default Footer

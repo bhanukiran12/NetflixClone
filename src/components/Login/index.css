@@ -69,14 +69,13 @@
   height: 40px;
   top: 628px;
   left: 540px;
-  gap: 0px;
-  opacity: 0px;
+
   color: white;
   background-color: #e50014;
   border: 0px solid;
   border-radius: 5px;
 }
-.errorMsg{
+.errorMsg {
   color: rgb(222, 27, 27);
 }
 @media (max-width: 768px) {
