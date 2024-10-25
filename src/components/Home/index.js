@@ -263,11 +263,11 @@ const Home = () => {
 
   const trendingSection = () => (
     <>
-      <h1 className="white">Trending Now</h1>
       {trendingError ? (
         failuretrendingView()
       ) : (
         <div className="trending-container">
+          <h1 className="white">Trending Now</h1>
           <Slider {...settings}>
             {trendingMovies.map(each => {
               const {id, posterPath, title} = each
@@ -290,11 +290,11 @@ const Home = () => {
   )
   const originalsSection = () => (
     <>
-      <h1 className="white">Originals</h1>
       {originalsError ? (
         failureoriginalsView()
       ) : (
         <div className="originals-container">
+          <h1 className="white">Originals</h1>
           <Slider {...settings}>
             {originalsMovies.map(each => {
               const {id, posterPath, title} = each

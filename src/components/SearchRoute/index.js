@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {HiOutlineSearch} from 'react-icons/hi'
 import Loader from 'react-loader-spinner'
@@ -48,6 +49,7 @@ const SearchRoute = () => {
       setSearchLoading(false)
       setsearchClick(true)
       setSearchError(false)
+      console.log(updatedDate)
     } else {
       setSearchError(true)
     }
@@ -112,7 +114,7 @@ const SearchRoute = () => {
     margin: '0px',
   }
   const searchView = () => (
-    <ul style={searchResultsStyle}>
+    <div style={searchResultsStyle}>
       {searchLoading ? (
         isLoading()
       ) : (
@@ -121,22 +123,24 @@ const SearchRoute = () => {
             noresultsView()
           ) : (
             <>
-              {searchResults.map(each => (
-                <div>
+              <ul className="flex">
+                {searchResults.map(each => (
                   <li key={each.id}>
-                    <img
-                      src={each.posterPath}
-                      className="searchImageResult"
-                      alt={each.title}
-                    />
+                    <Link to={`movies/${each.id}`}>
+                      <img
+                        src={each.posterPath}
+                        className="searchImageResult"
+                        alt={each.title}
+                      />
+                    </Link>
                   </li>
-                </div>
-              ))}
+                ))}
+              </ul>
             </>
           )}
         </>
       )}
-    </ul>
+    </div>
   )
   return (
     <div>

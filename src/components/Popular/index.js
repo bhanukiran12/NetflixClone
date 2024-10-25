@@ -72,15 +72,15 @@ const Popular = () => {
         <div className="popular">
           <ul>
             {popularMovies.map(each => (
-              <Link to={`/movies/${each.id}`} key={each.id}>
-                <li key={each.id}>
+              <li key={each.id}>
+                <Link to={`/movies/${each.id}`} key={each.id}>
                   <img
                     src={each.posterPath}
                     className="popular-image"
                     alt={each.title}
                   />
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
