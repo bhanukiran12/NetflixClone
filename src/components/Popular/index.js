@@ -41,6 +41,7 @@ const Popular = () => {
       setApiError(false)
     } else {
       setApiError(true)
+      setpopularLoading(false)
     }
   }
 

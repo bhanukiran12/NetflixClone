@@ -106,11 +106,7 @@ const Header = props => {
                   type="button"
                   data-testid="searchButton"
                 >
-                  <HiOutlineSearch
-                    size={20}
-                    color="white"
-                    data-testid="searchButton"
-                  />
+                  <HiOutlineSearch size={20} color="white" />
                 </button>
               </Link>
               <button

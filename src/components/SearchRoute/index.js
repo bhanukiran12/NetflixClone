@@ -79,7 +79,7 @@ const SearchRoute = () => {
         onClick={searchAPIHandler}
         data-testid="searchButton"
       >
-        <HiOutlineSearch size={20} color="white" data-testid="searchButton" />
+        <HiOutlineSearch size={20} color="white" />
       </button>
     </div>
   )

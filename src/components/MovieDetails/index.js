@@ -30,123 +30,143 @@ const MovieDetails = props => {
     const updatedDate = addMinutes(initialDate, minutesAsNumber)
     return format(updatedDate, "H 'h' m 'm'")
   }
+
+  const formatDate = date => {
+    const day = date.getDate()
+    const month = date.toLocaleString('default', {month: 'long'})
+    const year = date.getFullYear()
+
+    let suffix = 'th' // Default suffix
+    if (day % 10 === 1 && day !== 11) {
+      suffix = 'st'
+    } else if (day % 10 === 2 && day !== 12) {
+      suffix = 'nd'
+    } else if (day % 10 === 3 && day !== 13) {
+      suffix = 'rd'
+    }
+
+    return `${day}${suffix} ${month} ${year}`
+  }
+
+  // useEffect(() => {
+  //   const movieDetailsAPIHandler = async () => {
+  //     const jwtToken = Cookies.get('jwt_token')
+
+  //     const url = `https://apis.ccbp.in/movies-app/movies/${id}`
+  //     const options = {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Bearer ${jwtToken}`,
+  //       },
+  //     }
+  //     const response = await fetch(url, options)
+  //     const data = await response.json()
+
+  //     if (response.ok) {
+  //       const updatedDate = data.movie_details.similar_movies.map(each => ({
+  //         backdropPath: each.backdrop_path,
+  //         id: each.id,
+  //         overview: each.overview,
+  //         posterPath: each.poster_path,
+  //         title: each.title,
+  //       }))
+
+  //       setSimilarMovies(updatedDate)
+  //       setMovieDetailsLoading(false)
+
+  //       const moviedata = {
+  //         adult: data.movie_details.adult,
+  //         backdropPath: data.movie_details.backdropPath,
+  //         budget: data.movie_details.budget,
+  //         genres: data.movie_details.genres.map(each => ({
+  //           id: each.id,
+  //           name: each.name,
+  //         })),
+  //         id: data.movie_details.id,
+  //         overview: data.movie_details.overview,
+  //         posterPath: data.movie_details.poster_path,
+  //         releaseDate: data.movie_details.release_date,
+  //         runtime: data.movie_details.runtime,
+  //         spokenLanguages: data.movie_details.spoken_languages.map(each => ({
+  //           id: each.id,
+  //           englishName: each.english_name,
+  //         })),
+  //         title: data.movie_details.title,
+  //         voteAverage: data.movie_details.vote_average,
+  //         voteCount: data.movie_details.vote_count,
+  //       }
+  //       setMovieDetails(moviedata)
+  //       setdetailsError(false)
+  //     } else {
+  //       setdetailsError(true)
+  //       setMovieDetailsLoading(false)
+  //     }
+  //   }
+
+  //   movieDetailsAPIHandler()
+  // }, [id])
+
   const {match} = props
   const {params} = match
   const {id} = params
-  useEffect(() => {
-    const movieDetailsAPIHandler = async () => {
-      const jwtToken = Cookies.get('jwt_token')
+  const movieDetailsAPIHandler = async () => {
+    const jwtToken = Cookies.get('jwt_token')
 
-      const url = `https://apis.ccbp.in/movies-app/movies/${id}`
-      const options = {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      }
-      const response = await fetch(url, options)
-      const data = await response.json()
-
-      if (response.ok) {
-        const updatedDate = data.movie_details.similar_movies.map(each => ({
-          backdropPath: each.backdrop_path,
-          id: each.id,
-          overview: each.overview,
-          posterPath: each.poster_path,
-          title: each.title,
-        }))
-
-        setSimilarMovies(updatedDate)
-        setMovieDetailsLoading(false)
-
-        const moviedata = {
-          adult: data.movie_details.adult,
-          backdropPath: data.movie_details.backdropPath,
-          budget: data.movie_details.budget,
-          genres: data.movie_details.genres.map(each => ({
-            id: each.id,
-            name: each.name,
-          })),
-          id: data.movie_details.id,
-          overview: data.movie_details.overview,
-          posterPath: data.movie_details.poster_path,
-          releaseDate: data.movie_details.release_date,
-          runtime: data.movie_details.runtime,
-          spokenLanguages: data.movie_details.spoken_languages.map(each => ({
-            id: each.id,
-            englishName: each.english_name,
-          })),
-          title: data.movie_details.title,
-          voteAverage: data.movie_details.vote_average,
-          voteCount: data.movie_details.vote_count,
-        }
-        setMovieDetails(moviedata)
-        setdetailsError(false)
-      } else {
-        setdetailsError(true)
-      }
+    const url = `https://apis.ccbp.in/movies-app/movies/${id}`
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
     }
+    const response = await fetch(url, options)
+    console.log(`response${response}`)
+    const data = await response.json()
+    console.log(data)
+    if (response.ok) {
+      const updatedDate = data.movie_details.similar_movies.map(each => ({
+        backdropPath: each.backdrop_path,
+        id: each.id,
+        overview: each.overview,
+        posterPath: each.poster_path,
+        title: each.title,
+      }))
 
+      setSimilarMovies(updatedDate)
+      setMovieDetailsLoading(false)
+      const moviedata = {
+        adult: data.movie_details.adult,
+        backdropPath: data.movie_details.backdropPath,
+        budget: data.movie_details.budget,
+        genres: data.movie_details.genres.map(each => ({
+          id: each.id,
+          name: each.name,
+        })),
+        id: data.movie_details.id,
+        overview: data.movie_details.overview,
+        posterPath: data.movie_details.poster_path,
+        releaseDate: data.movie_details.release_date,
+        runtime: data.movie_details.runtime,
+        spokenLanguages: data.movie_details.spoken_languages.map(each => ({
+          id: each.id,
+          englishName: each.english_name,
+        })),
+        title: data.movie_details.title,
+        voteAverage: data.movie_details.vote_average,
+        voteCount: data.movie_details.vote_count,
+      }
+      setMovieDetails(moviedata)
+    } else {
+      setMovieDetailsLoading(false)
+      setdetailsError(true)
+    }
+    console.log(`data${data}`)
+  }
+
+  useEffect(() => {
+    console.log('Fetching movie details...')
     movieDetailsAPIHandler()
   }, [id])
-
-  // const movieDetailsAPIHandler = async () => {
-  //   const jwtToken = Cookies.get('jwt_token')
-  //   const {match} = props
-  //   const {params} = match
-  //   const {id} = params
-  //   const url = `https://apis.ccbp.in/movies-app/movies/${id}`
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Bearer ${jwtToken}`,
-  //     },
-  //   }
-  //   const response = await fetch(url, options)
-  //   console.log(`response${response}`)
-  //   const data = await response.json()
-  //   console.log(data)
-  //   if (response.ok) {
-  //     const updatedDate = data.movie_details.similar_movies.map(each => ({
-  //       backdropPath: each.backdrop_path,
-  //       id: each.id,
-  //       overview: each.overview,
-  //       posterPath: each.poster_path,
-  //       title: each.title,
-  //     }))
-
-  //     setSimilarMovies(updatedDate)
-  //     setMovieDetailsLoading(false)
-  //     const moviedata = {
-  //       adult: data.movie_details.adult,
-  //       backdropPath: data.movie_details.backdropPath,
-  //       budget: data.movie_details.budget,
-  //       genres: data.movie_details.genres.map(each => ({
-  //         id: each.id,
-  //         name: each.name,
-  //       })),
-  //       id: data.movie_details.id,
-  //       overview: data.movie_details.overview,
-  //       posterPath: data.movie_details.poster_path,
-  //       releaseDate: data.movie_details.release_date,
-  //       runtime: data.movie_details.runtime,
-  //       spokenLanguages: data.movie_details.spoken_languages.map(each => ({
-  //         id: each.id,
-  //         englishName: each.english_name,
-  //       })),
-  //       title: data.movie_details.title,
-  //       voteAverage: data.movie_details.vote_average,
-  //       voteCount: data.movie_details.vote_count,
-  //     }
-  //     setMovieDetails(moviedata)
-  //   }
-  //   console.log(`data${data}`)
-  // }
-
-  // useEffect(() => {
-  //   console.log('Fetching movie details...')
-  //   movieDetailsAPIHandler()
-  // }, [])
 
   const screenWidth = window.innerWidth
 
@@ -169,7 +189,7 @@ const MovieDetails = props => {
         alt="failure view"
       />
       <p>Something went wrong. Please try again</p>
-      <button type="button" onClick={useEffect}>
+      <button type="button" onClick={movieDetailsAPIHandler}>
         Try Again
       </button>
     </div>
@@ -185,6 +205,7 @@ const MovieDetails = props => {
             <h1 className="white">{movieDetails.title}</h1>
             <div className="flex">
               <p className="white mr-3">
+                {movieDetails.runtime}|
                 {convertMinutesToHoursMinutes(movieDetails.runtime)}
               </p>
 
@@ -236,14 +257,16 @@ const MovieDetails = props => {
               <h1 className="grey-color">Budget</h1>
               <p className="white">{movieDetails.budget}</p>
               <h1 className="grey-color">Release Date</h1>
-              <p className="white">{movieDetails.releaseDate}</p>
+              <p className="white">
+                {formatDate(new Date(movieDetails.releaseDate))}
+              </p>
             </div>
           </div>
           <div className="similarMovies">
             <h1 className="white ml-5">More Like This</h1>
             <div className="similarMovieView">
               {similarMovies.map(each => (
-                <div>
+                <div key={each.id}>
                   <Link to={`/movies/${each.id}`} key={each.id}>
                     <img
                       src={each.posterPath}

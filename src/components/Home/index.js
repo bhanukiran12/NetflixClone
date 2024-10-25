@@ -81,6 +81,7 @@ const Home = () => {
       setTrendingError(false)
     } else {
       setTrendingError(true)
+      settrendingLoading(false)
     }
   }
 
@@ -109,6 +110,7 @@ const Home = () => {
       setoriginalsLoading(false)
     } else {
       setOrginalsError(true)
+      setoriginalsLoading(false)
     }
   }
 
@@ -193,7 +195,7 @@ const Home = () => {
         ) : (
           <div className="banner-description">
             <h1>{banner.title}</h1>
-            <h1>{banner.description}</h1>
+            <p>{banner.description}</p>
             <Link to={`movies/${banner.id}`}>
               <button type="button">Play</button>
             </Link>
